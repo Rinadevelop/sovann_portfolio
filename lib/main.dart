@@ -542,18 +542,35 @@ class _Hero extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 110,
-            height: 110,
+            width: 120,
+            height: 120,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: const LinearGradient(
                 colors: [purple, pink],
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: pink.withOpacity(0.3),
+                  blurRadius: 20,
+                  spreadRadius: 2,
+                ),
+              ],
             ),
-            child: const Icon(
-              Icons.person,
-              size: 65,
-              color: Colors.white,
+            padding: const EdgeInsets.all(3.5),
+            child: ClipOval(
+              child: Image.asset(
+                'assets/photo.jpg',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: cardColor,
+                  child: const Icon(
+                    Icons.person,
+                    size: 65,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 25),
